@@ -161,9 +161,9 @@
             </div>
               <!-- /.box-body -->
 
-              <!-- <div class="box-footer">
-                <button type="submit" name="disubmit" class="btn btn-primary btn-md">Update</button>
-              </div> -->
+              <div class="box-footer">
+              <a href="download.php?filename=<?php echo $name;?>&f=<?php echo $row['fname'] ?>"><button type="submit" name="disubmit" class="btn btn-primary btn-md">download</button></a>
+              </div>
             </form>
       </div>
 

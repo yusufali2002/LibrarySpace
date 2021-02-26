@@ -5,7 +5,7 @@
 ?>
 
 <?php  
-require ('inc/dbconnect.php');
+$conn=new PDO('mysql:host=localhost; dbname=librarydb', 'root', '') or die(mysql_error());
 $message = ""; 
 $message2 = ""; 
 
@@ -15,23 +15,45 @@ if(isset($_POST['publish'])){
 
         // Variables for user submit form()
         $headline = $_POST['headline'];
-        $news = $_POST['news'];
+        $news = $_POST['news']; 
        
+        $name=$_FILES['file']['name'];
+        $size=$_FILES['file']['size'];
+        $type=$_FILES['file']['type'];
+        $temp=$_FILES['file']['tmp_name'];
+        // $caption1=$_POST['caption'];
+        // $link=$_POST['link'];
+        $fname = date("YmdHis").'_'.$name;
+        $chk = $conn->query("SELECT * FROM publications where filename = '$name' ")->rowCount();
+        if($chk){
+          $i = 1;
+          $c = 0;
+        while($c == 0){
+            $i++;
+            $reversedParts = explode('.', strrev($name), 2);
+            $tname = (strrev($reversedParts[1]))."_".($i).'.'.(strrev($reversedParts[0]));
+          // var_dump($tname);exit;
+            $chk2 = $conn->query("SELECT * FROM  publications where filename = '$tname' ")->rowCount();
+            if($chk2 == 0){
+              $c = 1;
+              $name = $tname;
+            }
+          }
+      }
+       $move =  move_uploaded_file($temp,"upload/".$fname);
+       if($move){
+         $query=$conn->query("insert into publications(`headline`, `News`, `filename`, `category`)values('$headline','$news','$fname','book')");
+        if($query){
+        // header("location:index.php");
+        $message =  "<div class=\"alert alert-success\">
+              <a href=\"index.php\" class=\"close\" data-dismiss=\"alert\" aria-label=\"check\">&times;</a>
+               Published Successfully. <a href=\"index.php\">Click to view dashboard </a></div>";
+        }
+        else{
+        die(mysql_error());
+        }
+       }
 
-
-            $query = "INSERT INTO `publications`(`headline`, `News`)VALUES('$headline','$news')";
-
-            if($query_run = mysqli_query($conn, $query)){
-
-              $message =  "<div class=\"alert alert-info\">
-              <a href=\"addpatient.php\" class=\"close\" data-dismiss=\"alert\" aria-label=\"check\">&times;</a>
-               Published Successfully. <a href=\"addpatient.php\">Click to Add Patient </a></div>";
-
-            }else{
-             $message2 =  "<div class=\"alert alert-danger\">
-                <a href=\"register.php\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
-                 Kindly fill this form again</div>";
-                }
 
  
 
@@ -61,6 +83,8 @@ if(isset($_POST['publish'])){
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
+      <?php echo $message?>
+                <?php echo $message2?>
         <div class="row">
           <!-- left column -->
           <div class="col-md-12">
@@ -68,8 +92,7 @@ if(isset($_POST['publish'])){
             <div class="card card-success">
               <div class="card-header">
                 <h3 class="card-title">Add Publication</h3>
-                <?php echo $message?>
-                <?php echo $message2?>
+              
               </div>
               <!-- /.card-header -->
               <div class="card-body">

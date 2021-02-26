@@ -127,7 +127,7 @@
       </div>
       <div class="modal-body">
          
-      <div class="display"></div>
+      <div class="display"></div> 
       <div class="col-md-3 offset-md-3"><img src="dist/img/dentist.png"></div>
           <form role="form" action="social_media_reports.php" method="POST">
               <div class="box-body">

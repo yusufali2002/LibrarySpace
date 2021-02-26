@@ -30,7 +30,7 @@ if(!loggedin()){
       $dr_id = $_SESSION['id'];
      
 
-  
+   
 
             
 
@@ -72,20 +72,21 @@ if(!loggedin()){
               <!-- /.card-header -->
               <div class="card-body">
                <div class="card-body">
-              <table  class="table table-bordered table-striped" id="example2">
+              <table  class="table table-bordered table-striped" id="example1">
                   <thead>
                   <tr>
                     <th>SN</th>
                     <th>Headline</th>
                     <th>Description</th>
                     <th>Date Published</th>  
-                    <th>Action</th>                  
+                    <th>Action</th>       
+                    <th></th>            
                   </tr>
                   </thead>
                   <tbody>
                   <?php
                            
-                            $sql = "SELECT `headline`, `News`, `datecreated` FROM `publications` 
+                            $sql = "SELECT * FROM `publications` 
                             ORDER BY `datecreated` DESC";
                             $result = $conn->query($sql);
                             $counter = 0;
@@ -100,6 +101,8 @@ if(!loggedin()){
                                 <span class='spinner-grow spinner-grow-sm'></span>
                                 See More</a>";
 
+                                $download = "<a href='download.php?filename=".$row['filename']."&f=".$row['filename']."'><button class='btn btn-success'>Download</button></a>";
+                               
                                     
                                 echo "<tr>
                                 <td>".++$counter."</td>
@@ -107,6 +110,8 @@ if(!loggedin()){
                                 <td>".$row['News']."</td>                               
                                 <td>".$row['datecreated']."</td>
                                 <td>".$ustatus."</td>
+                                <td>".$download."</td>
+                                
                                
                                 
 
@@ -127,7 +132,8 @@ if(!loggedin()){
                     <th>Headline</th>
                     <th>Description</th>
                     <th>Date Published</th>  
-                    <th>Action</th>              
+                    <th>Action</th> 
+                    <th></th>              
                   </tr>
                    
                   </tfoot>
