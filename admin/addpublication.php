@@ -4,8 +4,9 @@
  include("inc/aside.php")
 ?>
 
+
 <?php  
-$conn=new PDO('mysql:host=localhost; dbname=librarydb', 'root', '') or die(mysql_error());
+$conn=new PDO('mysql:host=http://libraryspace.jonasgodfrey.com; dbname=stsainit_libspacedb', 'stsainit_libuser', 'myj,JNaY0hnH') or die(mysql_error());
 $message = ""; 
 $message2 = ""; 
 
