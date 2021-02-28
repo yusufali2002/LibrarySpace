@@ -1,18 +1,23 @@
 <?php
 
-include("inc/dbconnect.php");
+include("http://libraryspace.jonasgodfrey.com/inc/dbconnect.php");
 
-include("inc/core.php");
+
+include("http://libraryspace.jonasgodfrey.com/inc/core.php");
  
 
 
  if(!loggedin()){
 
+
   header('Location: /front');
+
   
 }else{
+  
         
-}    
+}   
+
  ?>
 
 <!DOCTYPE html>
