@@ -1,9 +1,9 @@
 <?php 
 
-$servername = "http://libraryspace.jonasgodfrey.com";
-$username = "stsainit_libuser";
-$password = "myj,JNaY0hnH";
-$database = "stsainit_libspacedb";
+$servername = "d6rii63wp64rsfb5.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
+$username = "uaivyvws5hftpuio";
+$password = "vj3n0zzivts1ovd8";
+$database = "hwamyb1u07m6hoyd";
 
 
 $conn = new mysqli($servername, $username, $password, $database);

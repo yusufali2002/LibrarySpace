@@ -1,23 +1,21 @@
 <?php 
 
-/* Credentials */
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "librarydb";
+$servername = "d6rii63wp64rsfb5.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
+$username = "uaivyvws5hftpuio";
+$password = "vj3n0zzivts1ovd8";
+$database = "hwamyb1u07m6hoyd";
 
 
-/* Connection */
 $conn = new mysqli($servername, $username, $password, $database);
 
-/* If connection fails for some reason */
 if ($conn->connect_error) {
 	die("Database connection failed: ". $conn->connect_error);
 }
-// else{
-//     echo "connected";
-// }
+
+
+
 ?>
+
 
 
 

@@ -5,7 +5,7 @@
 ?>
 
 <?php  
-$conn=new PDO('mysql:host=localhost; dbname=librarydb', 'root', '') or die(mysql_error());
+$conn=new PDO('mysql:host=d6rii63wp64rsfb5.cbetxkdyhwsb.us-east-1.rds.amazonaws.com; dbname=hwamyb1u07m6hoyd', 'uaivyvws5hftpuio', 'vj3n0zzivts1ovd8') or die(mysql_error());
 $message = ""; 
 $message2 = ""; 
 
