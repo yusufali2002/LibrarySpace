@@ -1,9 +1,9 @@
 <?php
 
-include("http://libraryspace.jonasgodfrey.com/inc/dbconnect.php");
+include("inc/dbconnect.php");
 
 
-include("http://libraryspace.jonasgodfrey.com/inc/core.php");
+include("inc/core.php");
  
 
 
